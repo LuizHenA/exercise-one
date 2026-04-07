@@ -32,4 +32,28 @@ public class ContaRestaurante {
     public double calcularValorFinal() {
         return calcularSubtotal() + calcularTaxaServico() - calcularDesconto();
     }
+
+    public void imprimir(){
+        System.out.println("======== CONTA DO RESTAURANTE ========");
+
+        System.out.println("\nCliente: " + cliente.nomeMaiusculo(cliente.nomeCompleto));
+        System.out.println("Primeiro nome: " + cliente.getPrimeiroNome());
+        System.out.println("Mesa: " + cliente.mesa);
+
+        System.out.println("\nPedidos:");
+
+        Pedido[] pedidos = {pedido1, pedido2, pedido3};
+
+        for (int i = 0; i < pedidos.length; i++) {
+            System.out.printf("%d - %s | Qtd: %d | Total: R$ %.2f%n",
+                    (i + 1), pedidos[i].descricao, pedidos[i].quantidade, pedidos[i].calcularTotalItem());
+        }
+
+        System.out.println("\n----------------------------");
+        System.out.printf("Subtotal: R$ %.2f%n", calcularSubtotal());
+        System.out.printf("Taxa de serviço: R$ %.2f%n", calcularTaxaServico());
+        System.out.printf("Desconto: R$ %.2f%n", calcularDesconto());
+        System.out.printf("Valor final: R$ %.2f%n", calcularValorFinal());
+        System.out.println("----------------------------");
+    }
 }
